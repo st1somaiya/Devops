@@ -1,0 +1,23 @@
+---
+- name: Install system packages on CentOS 10
+  hosts: slaves
+  become: true
+
+  vars:
+    packages:
+      - python3
+      - git
+      - curl
+      - rsync
+
+  tasks:
+    - name: Update all packages (dnf update)
+      dnf:
+        name: '*'
+        state: latest
+        update_cache: yes
+
+    - name: Install required packages
+      dnf:
+        name: "{{ packages }}"
+        state: present
