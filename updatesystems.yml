@@ -1,6 +1,6 @@
 ---
 - name: Install system packages on CentOS 10
-  hosts: slaves
+  hosts: All
   become: true
 
   vars:
